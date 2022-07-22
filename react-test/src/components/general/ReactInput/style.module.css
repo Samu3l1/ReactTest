@@ -16,3 +16,13 @@
     margin-right: 10px;
     justify-content: flex-end;
 }
+
+.errorMessage{
+    /*display: flex;*/
+    margin-left: 80px;
+    /*justify-content: center;*/
+    color: red;
+    height: 0;
+    position: relative;
+    top: -10px;
+}

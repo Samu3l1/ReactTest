@@ -1,0 +1,11 @@
+.wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.name{
+    display: flex;
+    min-width: 70px;
+    margin-right: 10px;
+    justify-content: flex-end;
+}
