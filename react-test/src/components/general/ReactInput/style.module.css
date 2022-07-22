@@ -1,0 +1,18 @@
+.form__field{
+    font: inherit;
+    padding: 0.5em 0.7em;
+    width: 100%;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.name{
+    display: flex;
+    min-width: 70px;
+    margin-right: 10px;
+    justify-content: flex-end;
+}

@@ -1,0 +1,10 @@
+.wrapper{
+    display: flex;
+    /*background-color: red;*/
+}
+
+.form{
+    width: 50%;
+    padding: 100px 150px;
+    /*border-right: 1px solid black;*/
+}
