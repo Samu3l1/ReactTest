@@ -6,13 +6,19 @@ import {FormDataType} from "../../../types";
 import Select from "react-select";
 import style from "./style.module.css"
 
+/**
+ * A list of options for the hobbies select
+ */
 const HOBBIES = [
     {value: 'chocolate', label: 'Chocolate'},
     {value: 'strawberry', label: 'Strawberry'},
     {value: 'vanilla', label: 'Vanilla'}
 ]
 
-
+/**
+ * Renders a disabled Hobbies field
+ * @constructor
+ */
 function DisabledSelect() {
     return (
         <div className={style.wrapper}>
@@ -47,6 +53,7 @@ const UserInputForm = () => {
     return (
         <div>
             <form id="my-form" onSubmit={handleSubmit(onSubmit)} className={style.formWrapper}>
+                {/* Right-side Form */}
                 <div className={style.formComponent}>
                     <ReactInput name="Name" value={watch("name")}/>
                     <ReactInput name="Email" value={watch("email")}/>
@@ -54,6 +61,7 @@ const UserInputForm = () => {
                     <ReactInput name="Website" value={watch("website")}/>
                     <DisabledSelect/>
                 </div>
+                {/* Left-Side Form */}
                 <div className={style.formComponent}>
                     <ReactInput errors={errors} name="Name" register={register("name", {
                         required: "Name is required",
