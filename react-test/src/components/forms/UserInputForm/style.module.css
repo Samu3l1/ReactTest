@@ -13,3 +13,13 @@
 .controller{
     width: 100%;
 }
+
+.formWrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.formComponent{
+    width: 45%;
+}

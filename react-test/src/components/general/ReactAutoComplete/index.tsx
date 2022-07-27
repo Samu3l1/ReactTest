@@ -1,41 +1,42 @@
-import {Autocomplete, Chip, TextField} from "@mui/material";
-import {Dispatch, SetStateAction} from "react";
+import React from "react";
+import SelectMultiple from "react-select";
+import {Controller} from "react-hook-form";
 import style from "./style.module.css"
 
-const ReactAutoComplete = ({state, setState, readOnly}: {state: string[], setState: Dispatch<SetStateAction<string[]>>, readOnly: boolean}) => {
+const Multiselect = ({label, name, values = [], control}: any) => {
+    const options = values.map((value: any) => ({
+        label: value,
+        value: value
+    }));
 
     return (
         <div className={style.wrapper}>
-            <div className={style.name}>
-                {`Hobbies: `}
-            </div>
-            <Autocomplete
-                size="small"
-                fullWidth
-                multiple
-                id="tags-filled"
-                options={[]}
-                readOnly={readOnly}
-                value={state}
-                freeSolo
-                onChange={(e, value: any) => {
-                    setState(value)
-                }}
-                renderTags={(value: any[], getTagProps: (arg0: { index: any }) => JSX.IntrinsicAttributes) =>
-                    value.map((option: any, index: any) => {
+            <label className={style.name}>{label}</label>
+            <div className={style.controller}>
+                <Controller
+                    name={name}
+                    control={control}
+                    render={({field: {value, onChange, onBlur}}) => {
                         return (
-                            <Chip size={"small"} key={index} variant="outlined" label={option} {...getTagProps({ index })} />
+                            <SelectMultiple
+                                options={options}
+                                placeholder={"Choose..."}
+                                isMulti={true}
+                                onChange={(options) =>
+                                    onChange(options?.map((option) => option.value))
+                                }
+                                onBlur={onBlur}
+                                value={options.filter((option: { value: any; }) => value?.includes(option.value))}
+                                defaultValue={options.filter((option: { value: any; }) =>
+                                    value?.includes(option.value)
+                                )}
+                            />
                         );
-                    })
-                }
-                renderInput={(params: any) => (
-                    <>
-                        <TextField {...params} label={"Hobbies"} placeholder={"Hobbies"} />
-                    </>
-                )}
-            />
+                    }}
+                />
+            </div>
         </div>
     );
 };
 
-export default ReactAutoComplete;
+export default Multiselect;

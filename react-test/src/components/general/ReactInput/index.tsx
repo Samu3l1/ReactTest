@@ -16,15 +16,18 @@ const ReactInput = (props: any) => {
                 </div>
                 <input {...props} {...props.register} className={style.form__field}/>
             </div>
-            <ErrorMessage
-                errors={props.errors}
-                name={props.name.toLowerCase()}
-                render={({message}) => {
-                    return (
-                        <p className={style.errorMessage}>{message}</p>
-                    )
-                }}
-            />
+            {
+                props.errors &&
+                <ErrorMessage
+                    errors={props.errors}
+                    name={props.name.toLowerCase()}
+                    render={({message}) => {
+                        return (
+                            <p className={style.errorMessage}>{message}</p>
+                        )
+                    }}
+                />
+            }
         </div>
 
     )
